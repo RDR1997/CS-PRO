@@ -11,4 +11,5 @@
     <string name="ConnectButton">connectMac</string>
     <string name="connectMac">connect</string>
     <string name="map">map</string>
+    <string name="AndroidWifi">AndroidWifi</string>
 </resources>

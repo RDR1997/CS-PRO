@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -42,12 +43,6 @@ public class MainActivity<x> extends AppCompatActivity {
 	private static int INTERVAL_FOR_RSSI = 15000; //in mSec
 	protected WifiManager mWifiManager;
 	private TextView ssidTextView;
-//	private TextView rssiTextView;
-//	private TextView rssiTextView2;
-//	private TextView rssiTextView3;
-//	private TextView distanceTextView;
-//	private TextView distanceTextView2;
-//	private TextView distanceTextView3;
 	private TextView xTextView;
 	private TextView yTextView;
 	private Button startButton;
@@ -95,7 +90,7 @@ public class MainActivity<x> extends AppCompatActivity {
 		if (!outputFile.exists()) {
 			try {
 				outputFile.createNewFile();
-				Log.i(TAG,"File Created");
+				Log.i(TAG, "File Created");
 			} catch (IOException e) {
 				e.printStackTrace();
 				Log.i(TAG, "File not Created");
@@ -129,6 +124,16 @@ public class MainActivity<x> extends AppCompatActivity {
 	}
 
 	public void wifiScanSuccess() throws IOException {
+		if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+			// TODO: Consider calling
+			//    ActivityCompat#requestPermissions
+			// here to request the missing permissions, and then overriding
+			//   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+			//                                          int[] grantResults)
+			// to handle the case where the user grants the permission. See the documentation
+			// for ActivityCompat#requestPermissions for more details.
+			return;
+		}
 		List<ScanResult> mWifiList = mWifiManager.getScanResults();
 		boolean ssidfound = false;
 		String ssid = getString(R.string.TheLastKnght97);
@@ -264,12 +269,12 @@ public class MainActivity<x> extends AppCompatActivity {
 
 			start();
 		}
-		//if (ssidfound == false) {
-		//	startButton.setText("Start");
-		//	Log.i(TAG, ssid + " Not Found");
-		//	foo.close();
-		//	Toast.makeText(this, "SSID not Found", Toast.LENGTH_SHORT).show();
-		//}
+		if (ssidfound == false) {
+			startButton.setText("Start");
+			Log.i(TAG, ssid + " Not Found");
+			foo.close();
+			Toast.makeText(this, "SSID not Found", Toast.LENGTH_SHORT).show();
+		}
 
 
 	}
