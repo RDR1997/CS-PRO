@@ -137,8 +137,8 @@ public class MainActivity<x> extends AppCompatActivity {
 		List<ScanResult> mWifiList = mWifiManager.getScanResults();
 		boolean ssidfound = false;
 		String ssid = getString(R.string.TheLastKnght97);
-		String ssid2 = getString(R.string.Pandula_B);
-		String ssid3 = getString(R.string.sltgo);
+		String ssid2 = getString(R.string.TheLastKnght97);
+		String ssid3 = getString(R.string.TheLastKnght97);
 		for (ScanResult scanResult : mWifiList) {
 			if (scanResult.SSID.equals(ssid)) {
 				ssidfound = true;
