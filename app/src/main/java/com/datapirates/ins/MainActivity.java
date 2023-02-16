@@ -2,11 +2,14 @@ package com.datapirates.ins;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
@@ -15,6 +18,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,18 +33,25 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
 public class MainActivity<x> extends AppCompatActivity {
-
-
+	public static final String EXTRA_NUMBER_X = "com.datapirates.ins.xaxi";
+	public static final String EXTRA_NUMBER_Y = "com.datapirates.ins.yaxi";
 	double d1, d2, d3;
+	private static ImageView imageView;
+	private static Button button;
+	private int current_image;
+	private ImageView image;
+	public ArrayList<Integer> products;
+	public ArrayList<Integer> routes;
 
 	private static String TAG = "_RSSI";
-	private static int INTERVAL_FOR_RSSI = 15000; //in mSec
+	private static int INTERVAL_FOR_RSSI = 1000; //in mSec
 	protected WifiManager mWifiManager;
 	private TextView ssidTextView;
 	private TextView xTextView;
@@ -96,8 +107,204 @@ public class MainActivity<x> extends AppCompatActivity {
 				Log.i(TAG, "File not Created");
 			}
 		}
+//------------------------------------------------------------------------------------------
+		buttonclick();
+
+		products = new ArrayList<>();
+		products.add(1);        //A
+		products.add(2);        //B
+		products.add(3);        //C
+		products.add(4);        //D
+		products.add(5);        //E
+
+		routes = new ArrayList<Integer>();
+		if(products.size()==5){
+			routes.add(R.drawable.a_a);
+			routes.add(R.drawable.a_a);
+			routes.add(R.drawable.a_b);
+			routes.add(R.drawable.b_c);
+			routes.add(R.drawable.c_e);
+			routes.add(R.drawable.d_e);
+
+		}
+		if(products.size()==4){
+			if (products.get(0)==1) {
+				routes.add(R.drawable.a_a);
+				routes.add(R.drawable.a_a);
+				if (products.get(1)==2) {
+					routes.add(R.drawable.a_b);
+					if (products.get(2)==3) {
+						routes.add(R.drawable.b_c);
+						if (products.get(3)==4) {
+							routes.add(R.drawable.c_d);
+						}
+						if (products.get(3)==5) {
+							routes.add(R.drawable.c_e);
+						}
+
+					}
+					if (products.get(2)==4) {
+						routes.add(R.drawable.b_d);
+						routes.add(R.drawable.d_e);
+
+					}
+				}
+				if (products.get(1)==3) {
+					routes.add(R.drawable.a_c);
+					routes.add(R.drawable.c_e);
+					routes.add(R.drawable.d_e);
+				}
+			}
+			if (products.get(0)==2) {
+				routes.add(R.drawable.b_b);
+				routes.add(R.drawable.b_b);
+				routes.add(R.drawable.b_c);
+				routes.add(R.drawable.c_e);
+				routes.add(R.drawable.d_e);
+			}
+		}
+		if(products.size()==3){
+			if (products.get(0)==1){
+				routes.add(R.drawable.a_a);
+				routes.add(R.drawable.a_a);
+				if (products.get(1)==2){
+					routes.add(R.drawable.a_b);
+					if (products.get(2)==3) {
+						routes.add(R.drawable.b_c);
+					}
+					if (products.get(2)==4){
+						routes.add(R.drawable.b_d);
+					}
+					if (products.get(2)==5){
+						routes.add(R.drawable.b_d);
+					}
+				}
+				if (products.get(1)==3){
+					routes.add(R.drawable.a_c);
+					if (products.get(2)==4){
+						routes.add(R.drawable.c_d);
+					}
+					if (products.get(2)==5){
+						routes.add(R.drawable.c_e);
+					}
+				}
+				if (products.get(1)==4){
+					routes.add(R.drawable.a_d);
+					routes.add(R.drawable.d_e);
+				}
+			}
+			if (products.get(0)==2){
+				routes.add(R.drawable.b_b);
+				routes.add(R.drawable.b_b);
+				if (products.get(1)==3) {
+					routes.add(R.drawable.b_c);
+					if (products.get(2)==4) {
+						routes.add(R.drawable.c_d);
+					}
+					if (products.get(2)==5) {
+						routes.add(R.drawable.c_e);
+					}
+				}
+				if (products.get(1)==4) {
+					routes.add(R.drawable.b_d);
+					routes.add(R.drawable.d_e);
+				}
+			}
+			if (products.get(0)==3){
+				routes.add(R.drawable.c_c);
+				routes.add(R.drawable.c_c);
+				routes.add(R.drawable.c_e);
+				routes.add(R.drawable.d_e);
+
+			}
+		}
+		if(products.size()==2) {
+			if (products.get(0) == 1) {
+				routes.add(R.drawable.a_a);
+				routes.add(R.drawable.a_a);
+				if (products.get(1) == 2) {
+					routes.add(R.drawable.a_b);
+				}
+				if (products.get(1) == 3) {
+					routes.add( R.drawable.a_c);
+				}
+				if (products.get(1) == 4) {
+					routes.add(R.drawable.a_d);
+				}
+				if (products.get(1) == 5) {
+					routes.add(R.drawable.a_e);
+				}
+			}
+			if (products.get(0) == 2) {
+				routes.add(R.drawable.b_b);
+				routes.add(R.drawable.b_b);
+				if (products.get(1) == 3) {
+					routes.add(R.drawable.b_c);
+				}
+				if (products.get(1) == 4) {
+					routes.add( R.drawable.b_d);
+				}
+				if (products.get(1) == 5) {
+					routes.add(R.drawable.b_e);
+				}
+			}
+			if (products.get(0) == 3) {
+				routes.add(R.drawable.c_c);
+				routes.add(R.drawable.c_c);
+				if (products.get(1) == 4) {
+					routes.add(R.drawable.c_d);
+				}
+				if (products.get(1) == 5) {
+					routes.add(R.drawable.c_e);
+				}
+			}
+			if (products.get(0) == 4) {
+				routes.add(R.drawable.d_d);
+				routes.add(R.drawable.d_d);
+				if (products.get(1) == 5) {
+					routes.add(R.drawable.d_e);
+				}
+			}
+		}
+		if(products.size()==1){
+			if (products.get(0)==1){
+				routes.add(R.drawable.a_a);
+				routes.add(R.drawable.a_a);
+			}
+			if (products.get(0)==2){
+				routes.add(R.drawable.b_b);
+				routes.add(R.drawable.b_b);
+			}
+			if (products.get(0)==3){
+				routes.add(R.drawable.c_c);
+				routes.add(R.drawable.c_c);
+			}
+			if (products.get(0)==4){
+				routes.add(R.drawable.d_d);
+				routes.add(R.drawable.d_d);
+			}
+			if (products.get(0)==5){
+				routes.add(R.drawable.e_e);
+				routes.add(R.drawable.e_e);
+			}
+		}
+
 	}
 
+	public void buttonclick() {
+
+		imageView = (ImageView) findViewById(R.id.route);
+		button = (Button) findViewById(R.id.button4);
+		button.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				current_image++;
+				current_image = current_image % routes.size();
+				imageView.setImageResource(routes.get(current_image));
+			}
+		});
+	}
+//------------------------------------------------------------------------------------------
 
 	public void start_stop(View v) throws IOException {
 		Log.i(TAG, String.valueOf(ssidTextView.getText()));
@@ -137,8 +344,8 @@ public class MainActivity<x> extends AppCompatActivity {
 		List<ScanResult> mWifiList = mWifiManager.getScanResults();
 		boolean ssidfound = false;
 		String ssid = getString(R.string.TheLastKnght97);
-		String ssid2 = getString(R.string.TheLastKnght97);
-		String ssid3 = getString(R.string.TheLastKnght97);
+		String ssid2 = getString(R.string.Nokia3);
+		String ssid3 = getString(R.string.Nokia6);
 		for (ScanResult scanResult : mWifiList) {
 			if (scanResult.SSID.equals(ssid)) {
 				ssidfound = true;
@@ -258,16 +465,21 @@ public class MainActivity<x> extends AppCompatActivity {
 				Log.i(TAG, data);
 			}
 
-			double x1=0,x2=4,x3=2,y1=0,y2=0,y3=6;
-			double A = 2*((x3-x1)*(y3-y2)-(y3-y1)*(x3-x2));
+			double x1=0,x2=6,x3=2,y1=0,y2=4,y3=8;
+			double A = ((x2-x1)*(y3-y2)-(y2-y1)*(x3-x2));
 
-			int x = (int) ((y3-y2)*((d1*d1 - d3*d3 - x1*x1 +x3*x3 - y1*y1 + y3*y3) - (y3-y1)*(d2*d2 - d3*d3 - x2*x2 +x3*x3 - y2*y2 + y3*y3)) / A);
-			int y = (int) ((x3-x1)*((d2*d2 - d3*d3 - x2*x2 +x3*x3 - y2*y2 + y3*y3) - (x3-x2)*(d1*d1 - d3*d3 - x1*x1 +x3*x3 - y1*y1 + y3*y3)) / A);
+			int x = (int) ((y3-y2)*(d1*d1 - d2*d2 - x1*x1 +x2*x2 - y1*y1 + y2*y2) - (y2-y1)*(d2*d2 - d3*d3 - x2*x2 +x3*x3 - y2*y2 + y3*y3) / A);
+			int y = (int) ((x3-x2)*(d1*d1 - d2*d2 - x1*x1 +x2*x2 - y1*y1 + y2*y2) - (x3-x2)*(d2*d2 - d3*d3 - x2*x2 +x3*x3 - y2*y2 + y3*y3) / (-1)*A);
 
 			xTextView.setText(String.valueOf(x));
 			yTextView.setText(String.valueOf(y));
 
-			start();
+		//	start();
+			ImageView image = (ImageView) findViewById(R.id.newPin);
+
+			// Update the image's X and Y coordinates
+			image.setX(x);
+			image.setY(y);
 		}
 		if (ssidfound == false) {
 			startButton.setText("Start");
@@ -277,8 +489,8 @@ public class MainActivity<x> extends AppCompatActivity {
 		}
 
 
-	}
 
+	}
 
 
 	public void permissions(MainActivity thisActivity, String[] requiredPermission) {
@@ -304,6 +516,7 @@ public class MainActivity<x> extends AppCompatActivity {
 	@Override
 	public void onRequestPermissionsResult(int requestCode,
 	   String[] permissions, int[] grantResults) {
+		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 		switch (requestCode) {
 			case 111: {
 				// If request is cancelled, the result arrays are empty.
@@ -349,10 +562,32 @@ public class MainActivity<x> extends AppCompatActivity {
 
 	}
 
+/*	public void onClickMap(View view) {
+
+		//    setContentView(R.layout.add_product);
+		start();
+	}*/
+
 	public void start(){
+
+
+
+		//int xnumber = Integer.parseInt(xTextView.getText().toString());
+		//int ynumber = Integer.parseInt(yTextView.getText().toString());
+
 		Intent intent = new Intent(this, Map_Navigation.class);
+
+	//	intent.putExtra(EXTRA_NUMBER_X , xnumber);
+	//	intent.putExtra(EXTRA_NUMBER_Y , ynumber);
 		startActivity(intent);
 	}
+
+//Dijstra code here------------routing algorithms
+
+
+
+
+
 
 }
 
