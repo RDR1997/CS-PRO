@@ -34,22 +34,26 @@
         tools:visibility="invisible" />
 
     <ImageView
-        android:id="@+id/newMap"
-        android:layout_width="302dp"
-        android:layout_height="492dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/map" />
-
-    <ImageView
         android:id="@+id/route"
         android:layout_width="302dp"
         android:layout_height="492dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.596"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/j" />
+
+    <ImageView
+        android:id="@+id/newMap"
+        android:layout_width="302dp"
+        android:layout_height="492dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.596"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/map" />
 
     <TextView
         android:id="@+id/textViewY"
@@ -83,9 +87,11 @@
         android:id="@+id/newPin"
         android:layout_width="45dp"
         android:layout_height="41dp"
-        app:srcCompat="@drawable/ic_pin"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="485dp" />
+        android:layout_marginStart="192dp"
+        android:layout_marginTop="516dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_pin" />
 
     <Button
         android:id="@+id/button4"
