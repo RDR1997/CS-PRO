@@ -50,6 +50,8 @@ public class MainActivity<x> extends AppCompatActivity {
 	public ArrayList<Integer> products;
 	public ArrayList<Integer> routes;
 
+
+
 	private static String TAG = "_RSSI";
 	private static int INTERVAL_FOR_RSSI = 1000; //in mSec
 	protected WifiManager mWifiManager;
@@ -288,6 +290,10 @@ public class MainActivity<x> extends AppCompatActivity {
 				routes.add(R.drawable.e_e);
 			}
 		}
+//------------------------------------------------------------------------------------
+
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//------------------------------------------------------------------------------------
 
 	}
 

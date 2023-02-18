@@ -55,7 +55,7 @@ public class MainStartPage extends AppCompatActivity {
     }
 
     public void connect(){
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, selectProduct.class);
         startActivity(intent);
     }
 
