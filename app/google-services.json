@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "533690043663",
+    "project_id": "insystem-37aa4",
+    "storage_bucket": "insystem-37aa4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:533690043663:android:451bfb7954632afcbec27a",
+        "android_client_info": {
+          "package_name": "com.datapirates.ins"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "533690043663-43edv8f2uqjkvm1esn0fm7n9lt5suvrc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCL6S_hBp6Cst6Lqd1_yrHqV567bTFxQDY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "533690043663-43edv8f2uqjkvm1esn0fm7n9lt5suvrc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
