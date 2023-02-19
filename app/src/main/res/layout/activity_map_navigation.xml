@@ -67,6 +67,7 @@
         android:layout_marginBottom="40dp"
         android:onClick="onClickNext"
         android:text="Next"
+        android:background="@drawable/btn_shape_capsule"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

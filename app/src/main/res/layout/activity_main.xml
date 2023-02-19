@@ -14,9 +14,32 @@
         android:layout_marginStart="24dp"
         android:layout_marginBottom="16dp"
         android:onClick="start_stop"
+        android:background="@drawable/btn_shape_capsule"
         android:text="Start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginBottom="16dp"
+        android:text="Show Routes"
+        android:background="@drawable/btn_shape_capsule"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/finishBtn"
+        app:layout_constraintStart_toEndOf="@+id/start_stop" />
+
+    <Button
+        android:id="@+id/finishBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:text="Finish"
+        android:background="@drawable/btn_shape_capsule"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/setSSID"
@@ -44,7 +67,7 @@
 
     <ImageView
         android:id="@+id/route"
-        android:layout_width="302dp"
+        android:layout_width="310dp"
         android:layout_height="492dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -90,26 +113,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.803"
         app:srcCompat="@drawable/ic_pin" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginBottom="16dp"
-        android:text="Show Routes"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/finishBtn"
-        app:layout_constraintStart_toEndOf="@+id/start_stop" />
-
-    <Button
-        android:id="@+id/finishBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="16dp"
-        android:text="Finish"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
