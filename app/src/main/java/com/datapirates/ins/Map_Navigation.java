@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.rssireader.R;
 
@@ -26,7 +27,12 @@ public class Map_Navigation extends AppCompatActivity {
         setContentView(R.layout.activity_map_navigation);
         buttonclick();
 
-        products = new ArrayList<>();
+        TextView textView;
+        textView = findViewById(R.id.textView);
+        ArrayList<String> numbersList = (ArrayList<String>) getIntent().getSerializableExtra("key");
+        textView.setText(String.valueOf(numbersList));
+
+    /*    products = new ArrayList<>();
         products.add(1);        //A
         products.add(2);        //B
         products.add(3);        //C
@@ -203,7 +209,7 @@ public class Map_Navigation extends AppCompatActivity {
                 routes.add(R.drawable.e_e);
                 routes.add(R.drawable.e_e);
             }
-        }
+        }*/
     }
 
     public void buttonclick() {

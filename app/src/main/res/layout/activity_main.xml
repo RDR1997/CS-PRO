@@ -34,26 +34,22 @@
         tools:visibility="invisible" />
 
     <ImageView
-        android:id="@+id/route"
-        android:layout_width="302dp"
-        android:layout_height="492dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.596"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/j" />
-
-    <ImageView
         android:id="@+id/newMap"
         android:layout_width="302dp"
         android:layout_height="492dp"
-        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.596"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/route"
+        app:srcCompat="@drawable/map" />
+
+    <ImageView
+        android:id="@+id/route"
+        android:layout_width="302dp"
+        android:layout_height="492dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/map" />
+        app:srcCompat="@drawable/j" />
 
     <TextView
         android:id="@+id/textViewY"
@@ -87,10 +83,12 @@
         android:id="@+id/newPin"
         android:layout_width="45dp"
         android:layout_height="41dp"
-        android:layout_marginStart="192dp"
-        android:layout_marginTop="516dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.803"
         app:srcCompat="@drawable/ic_pin" />
 
     <Button
@@ -112,6 +110,15 @@
         android:text="Finish"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text=""
+        android:textSize="24sp"
+        android:textStyle="bold"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

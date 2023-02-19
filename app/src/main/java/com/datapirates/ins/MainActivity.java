@@ -110,14 +110,26 @@ public class MainActivity<x> extends AppCompatActivity {
 			}
 		}
 //------------------------------------------------------------------------------------------
-		buttonclick();
+
+	//	TextView textView;
+	//	textView = findViewById(R.id.textView2);
+		ArrayList<String> numbersList = (ArrayList<String>) getIntent().getSerializableExtra("key");
 
 		products = new ArrayList<>();
+		for (int j=0; j<numbersList.size();j++){
+			products.add(Integer.valueOf(numbersList.get(j)));
+		}
+	//	textView.setText(String.valueOf(products));
+
+		buttonclick();
+
+
+	/*	products = new ArrayList<>();
 		products.add(1);        //A
 		products.add(2);        //B
 		products.add(3);        //C
 		products.add(4);        //D
-		products.add(5);        //E
+		products.add(5);        //E*/
 
 		routes = new ArrayList<Integer>();
 		if(products.size()==5){
@@ -269,23 +281,23 @@ public class MainActivity<x> extends AppCompatActivity {
 			}
 		}
 		if(products.size()==1){
-			if (products.get(0)==1){
+			if (products.get(0)== 1){
 				routes.add(R.drawable.a_a);
 				routes.add(R.drawable.a_a);
 			}
-			if (products.get(0)==2){
+			if (products.get(0)== 2){
 				routes.add(R.drawable.b_b);
 				routes.add(R.drawable.b_b);
 			}
-			if (products.get(0)==3){
+			if (products.get(0)== 3){
 				routes.add(R.drawable.c_c);
 				routes.add(R.drawable.c_c);
 			}
-			if (products.get(0)==4){
+			if (products.get(0)== 4){
 				routes.add(R.drawable.d_d);
 				routes.add(R.drawable.d_d);
 			}
-			if (products.get(0)==5){
+			if (products.get(0)== 5){
 				routes.add(R.drawable.e_e);
 				routes.add(R.drawable.e_e);
 			}
@@ -295,6 +307,8 @@ public class MainActivity<x> extends AppCompatActivity {
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //------------------------------------------------------------------------------------
 
+
+//------------------------------------------------------------------------------------
 	}
 
 	public void buttonclick() {
@@ -574,12 +588,6 @@ public class MainActivity<x> extends AppCompatActivity {
 
 		startActivity(intent);
 	}
-
-//Dijstra code here------------routing algorithms
-
-
-
-
 
 
 }

@@ -45,7 +45,6 @@ public class MultiAdapter extends RecyclerView.Adapter<MultiAdapter.MyViewHolder
 //        Product product = list.get(position);
 //        holder.name.setText(product.getName());
         holder.bind(list.get(position));
-
     }
 
     @Override
@@ -71,7 +70,6 @@ public class MultiAdapter extends RecyclerView.Adapter<MultiAdapter.MyViewHolder
         void bind (final Product product){
             imageView.setVisibility(product.isChecked() ? View.VISIBLE : View.GONE);
             name.setText(product.getName());
-
 
             itemView.setOnClickListener(new View.OnClickListener() {
                     @Override

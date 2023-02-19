@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.rssireader.R;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,6 +32,7 @@ public class selectProduct extends AppCompatActivity {
     DatabaseReference database;
     MultiAdapter multiAdapter;
     ArrayList<Product> list;
+    ArrayList<String> sele;
     Button btn;
 
 
@@ -79,21 +79,29 @@ public class selectProduct extends AppCompatActivity {
             public void onClick(View v) {
                 if (multiAdapter.getSelected().size() > 0) {
                     StringBuilder stringBuilder = new StringBuilder();
-
+                    sele = new ArrayList<>();
                     for (int i = 0; i < multiAdapter.getSelected().size(); i++) {
-                        stringBuilder.append(multiAdapter.getSelected().get(i).getName());
+                        stringBuilder.append(multiAdapter.getSelected().get(i).getItem_number());
                         stringBuilder.append("\n");
 
+                        sele.add(multiAdapter.getSelected().get(i).getItem_number());
+
+
+
                     }
+
+
 
                     ShowToast(stringBuilder.toString().trim());
                 } else
                     ShowToast("No Selection");
                 gotoMap();
+            //    Intent intent = new Intent(selectProduct.this, MainActivity.class);
+            //    intent.putExtra("key", multiAdapter.getSelected());
+            //    startActivity(intent);
             }
 
         });
-
     }
 
     private void ShowToast (String msg){
@@ -101,7 +109,8 @@ public class selectProduct extends AppCompatActivity {
     }
 
     public void gotoMap () {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(selectProduct.this, MainActivity.class);
+        intent.putExtra("key", sele);
         startActivity(intent);
     }
 }
