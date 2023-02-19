@@ -11,52 +11,58 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.rssireader.R;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 import java.util.ArrayList;
 
-public class MultiAdapter extends RecyclerView.Adapter<MultiAdapter.MultiViewHolder>{
+public class MultiAdapter extends RecyclerView.Adapter<MultiAdapter.MyViewHolder>{
 
+    Context context;
+    ArrayList<Product> list;
 
-    private Context context;
-    private ArrayList<Product> products;
-
-    public MultiAdapter(Context context, ArrayList<Product> products){
+    public MultiAdapter(Context context, ArrayList<Product> list) {
         this.context = context;
-        this.products = products;
+        this.list = list;
     }
 
-    public void setProducts(ArrayList<Product> products){
-        this.products = new ArrayList<>();
-        this.products = products;
+    public void setProducts(ArrayList<Product> list){
+        this.list = new ArrayList<>();
+        this.list = list;
         notifyDataSetChanged();
+
     }
 
     @NonNull
     @Override
-    public MultiViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item,
-        parent, false);
-        return new MultiViewHolder(view);
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(context).inflate(R.layout.item,parent, false);
+        return new MyViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MultiViewHolder holder, int position) {
-        holder.bind(products.get(position));
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+//        Product product = list.get(position);
+//        holder.name.setText(product.getName());
+        holder.bind(list.get(position));
+
     }
 
     @Override
     public int getItemCount() {
-        return products.size();
+        return list.size();
     }
 
-    //2- ViewHolder class
-    class MultiViewHolder extends RecyclerView.ViewHolder{
-        private TextView textView;
-        private ImageView imageView;
+    public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        public MultiViewHolder(@NonNull View itemView) {
+        TextView name;
+        ImageView imageView;
+
+
+        public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.emp_name);
+
+            name = itemView.findViewById(R.id.emp_name);
             imageView = itemView.findViewById(R.id.imageViewy);
 
         }
@@ -64,32 +70,36 @@ public class MultiAdapter extends RecyclerView.Adapter<MultiAdapter.MultiViewHol
         //Getting selected items
         void bind (final Product product){
             imageView.setVisibility(product.isChecked() ? View.VISIBLE : View.GONE);
-            textView.setText(product.getName());
+            name.setText(product.getName());
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    product.setChecked(!product.isChecked());
-                    imageView.setVisibility(product.isChecked() ? View.VISIBLE : View.GONE);
-                }
-            });
-        }
-    }
+                    @Override
+                    public void onClick(View v) {
+                        product.setChecked(!product.isChecked());
+                        imageView.setVisibility(product.isChecked() ? View.VISIBLE : View.GONE);
+                    }
+                });
+            }
 
+        }
 
     //Getting All Items selected
-    public ArrayList<Product> getAll(){ return products;}
+    public ArrayList<Product> getAll(){ return list;}
 
     //Getting selected when btn clicked
     public ArrayList<Product> getSelected() {
 
         ArrayList<Product> selected = new ArrayList<>();
-        for (int i = 0; i < products.size(); i++) {
-            if (products.get(i).isChecked()) {
-                selected.add(products.get(i));
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).isChecked()) {
+                selected.add(list.get(i));
             }
         }
         return selected;
     }
-
 }
+
+
+
+

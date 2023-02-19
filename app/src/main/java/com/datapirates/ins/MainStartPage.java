@@ -59,16 +59,4 @@ public class MainStartPage extends AppCompatActivity {
         startActivity(intent);
     }
 
-/*    public void onClickadd(View view) {
-
-    //    setContentView(R.layout.add_product);
-        add_item();
-    }
-
-    public void add_item() {
-        Intent intent = new Intent(this, MainActivity2.class);
-        startActivity(intent);
-    }*/
-
-
 }

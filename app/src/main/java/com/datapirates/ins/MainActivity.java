@@ -73,7 +73,7 @@ public class MainActivity<x> extends AppCompatActivity {
 			}
 		}
 	};
-
+//------------------------------------------------------------------------------------------
 	@SuppressLint("MissingInflatedId")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -568,23 +568,10 @@ public class MainActivity<x> extends AppCompatActivity {
 
 	}
 
-/*	public void onClickMap(View view) {
-
-		//    setContentView(R.layout.add_product);
-		start();
-	}*/
-
 	public void start(){
-
-
-
-		//int xnumber = Integer.parseInt(xTextView.getText().toString());
-		//int ynumber = Integer.parseInt(yTextView.getText().toString());
 
 		Intent intent = new Intent(this, Map_Navigation.class);
 
-	//	intent.putExtra(EXTRA_NUMBER_X , xnumber);
-	//	intent.putExtra(EXTRA_NUMBER_Y , ynumber);
 		startActivity(intent);
 	}
 
