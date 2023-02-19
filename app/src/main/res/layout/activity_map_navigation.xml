@@ -66,6 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
         android:onClick="onClickNext"
+        android:fontFamily="@font/interr"
         android:text="Next"
         android:textColor="@color/WHITE"
         android:background="@drawable/btn_shape_capsule"

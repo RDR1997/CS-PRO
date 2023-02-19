@@ -16,9 +16,9 @@
         android:layout_marginBottom="86dp"
         android:onClick="onClickC"
         android:background="@drawable/btn_shape_capsule"
+        android:fontFamily="@font/interr"
         android:text="@string/connectMac"
         android:textColor="@color/WHITE"
-        android:fontFamily=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
