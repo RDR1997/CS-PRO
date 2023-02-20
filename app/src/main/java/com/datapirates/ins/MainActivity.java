@@ -2,14 +2,11 @@ package com.datapirates.ins;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
@@ -48,7 +45,9 @@ public class MainActivity<x> extends AppCompatActivity {
 	private int current_image;
 	private ImageView image;
 	public ArrayList<Integer> products;
+	public ArrayList<Integer> productsNew;
 	public ArrayList<Integer> routes;
+	public ArrayList<String> productsList;
 
 
 
@@ -111,15 +110,23 @@ public class MainActivity<x> extends AppCompatActivity {
 		}
 //------------------------------------------------------------------------------------------
 
-	//	TextView textView;
-	//	textView = findViewById(R.id.textView2);
 		ArrayList<String> numbersList = (ArrayList<String>) getIntent().getSerializableExtra("key");
+		ArrayList<String> nameList = (ArrayList<String>) getIntent().getSerializableExtra("keyName");
 
 		products = new ArrayList<>();
+		productsList = new ArrayList<>();
 		for (int j=0; j<numbersList.size();j++){
 			products.add(Integer.valueOf(numbersList.get(j)));
+			productsList.add(nameList.get(j));
 		}
-	//	textView.setText(String.valueOf(products));
+
+		productsNew = new ArrayList<>();
+		for (int pro: products){
+			if (!productsNew.contains(pro)){
+				productsNew.add(pro);
+			}
+		}
+
 
 		buttonclick();
 
@@ -132,7 +139,7 @@ public class MainActivity<x> extends AppCompatActivity {
 		products.add(5);        //E*/
 
 		routes = new ArrayList<Integer>();
-		if(products.size()==5){
+		if(productsNew.size()==5){
 			routes.add(R.drawable.a_a);
 			routes.add(R.drawable.a_a);
 			routes.add(R.drawable.a_b);
@@ -141,35 +148,35 @@ public class MainActivity<x> extends AppCompatActivity {
 			routes.add(R.drawable.d_e);
 
 		}
-		if(products.size()==4){
-			if (products.get(0)==1) {
+		if(productsNew.size()==4){
+			if (productsNew.get(0)==1) {
 				routes.add(R.drawable.a_a);
 				routes.add(R.drawable.a_a);
-				if (products.get(1)==2) {
+				if (productsNew.get(1)==2) {
 					routes.add(R.drawable.a_b);
-					if (products.get(2)==3) {
+					if (productsNew.get(2)==3) {
 						routes.add(R.drawable.b_c);
-						if (products.get(3)==4) {
+						if (productsNew.get(3)==4) {
 							routes.add(R.drawable.c_d);
 						}
-						if (products.get(3)==5) {
+						if (productsNew.get(3)==5) {
 							routes.add(R.drawable.c_e);
 						}
 
 					}
-					if (products.get(2)==4) {
+					if (productsNew.get(2)==4) {
 						routes.add(R.drawable.b_d);
 						routes.add(R.drawable.d_e);
 
 					}
 				}
-				if (products.get(1)==3) {
+				if (productsNew.get(1)==3) {
 					routes.add(R.drawable.a_c);
 					routes.add(R.drawable.c_e);
 					routes.add(R.drawable.d_e);
 				}
 			}
-			if (products.get(0)==2) {
+			if (productsNew.get(0)==2) {
 				routes.add(R.drawable.b_b);
 				routes.add(R.drawable.b_b);
 				routes.add(R.drawable.b_c);
@@ -177,37 +184,37 @@ public class MainActivity<x> extends AppCompatActivity {
 				routes.add(R.drawable.d_e);
 			}
 		}
-		if(products.size()==3){
-			if (products.get(0)==1){
+		if(productsNew.size()==3){
+			if (productsNew.get(0)==1){
 				routes.add(R.drawable.a_a);
 				routes.add(R.drawable.a_a);
-				if (products.get(1)==2){
+				if (productsNew.get(1)==2){
 					routes.add(R.drawable.a_b);
-					if (products.get(2)==3) {
+					if (productsNew.get(2)==3) {
 						routes.add(R.drawable.b_c);
 					}
-					if (products.get(2)==4){
+					if (productsNew.get(2)==4){
 						routes.add(R.drawable.b_d);
 					}
-					if (products.get(2)==5){
+					if (productsNew.get(2)==5){
 						routes.add(R.drawable.b_d);
 					}
 				}
-				if (products.get(1)==3){
+				if (productsNew.get(1)==3){
 					routes.add(R.drawable.a_c);
-					if (products.get(2)==4){
+					if (productsNew.get(2)==4){
 						routes.add(R.drawable.c_d);
 					}
-					if (products.get(2)==5){
+					if (productsNew.get(2)==5){
 						routes.add(R.drawable.c_e);
 					}
 				}
-				if (products.get(1)==4){
+				if (productsNew.get(1)==4){
 					routes.add(R.drawable.a_d);
 					routes.add(R.drawable.d_e);
 				}
 			}
-			if (products.get(0)==2){
+			if (productsNew.get(0)==2){
 				routes.add(R.drawable.b_b);
 				routes.add(R.drawable.b_b);
 				if (products.get(1)==3) {
@@ -224,7 +231,7 @@ public class MainActivity<x> extends AppCompatActivity {
 					routes.add(R.drawable.d_e);
 				}
 			}
-			if (products.get(0)==3){
+			if (productsNew.get(0)==3){
 				routes.add(R.drawable.c_c);
 				routes.add(R.drawable.c_c);
 				routes.add(R.drawable.c_e);
@@ -232,72 +239,72 @@ public class MainActivity<x> extends AppCompatActivity {
 
 			}
 		}
-		if(products.size()==2) {
-			if (products.get(0) == 1) {
+		if(productsNew.size()==2) {
+			if (productsNew.get(0) == 1) {
 				routes.add(R.drawable.a_a);
 				routes.add(R.drawable.a_a);
-				if (products.get(1) == 2) {
+				if (productsNew.get(1) == 2) {
 					routes.add(R.drawable.a_b);
 				}
-				if (products.get(1) == 3) {
+				if (productsNew.get(1) == 3) {
 					routes.add( R.drawable.a_c);
 				}
-				if (products.get(1) == 4) {
+				if (productsNew.get(1) == 4) {
 					routes.add(R.drawable.a_d);
 				}
-				if (products.get(1) == 5) {
+				if (productsNew.get(1) == 5) {
 					routes.add(R.drawable.a_e);
 				}
 			}
-			if (products.get(0) == 2) {
+			if (productsNew.get(0) == 2) {
 				routes.add(R.drawable.b_b);
 				routes.add(R.drawable.b_b);
-				if (products.get(1) == 3) {
+				if (productsNew.get(1) == 3) {
 					routes.add(R.drawable.b_c);
 				}
-				if (products.get(1) == 4) {
+				if (productsNew.get(1) == 4) {
 					routes.add( R.drawable.b_d);
 				}
-				if (products.get(1) == 5) {
+				if (productsNew.get(1) == 5) {
 					routes.add(R.drawable.b_e);
 				}
 			}
-			if (products.get(0) == 3) {
+			if (productsNew.get(0) == 3) {
 				routes.add(R.drawable.c_c);
 				routes.add(R.drawable.c_c);
-				if (products.get(1) == 4) {
+				if (productsNew.get(1) == 4) {
 					routes.add(R.drawable.c_d);
 				}
-				if (products.get(1) == 5) {
+				if (productsNew.get(1) == 5) {
 					routes.add(R.drawable.c_e);
 				}
 			}
-			if (products.get(0) == 4) {
+			if (productsNew.get(0) == 4) {
 				routes.add(R.drawable.d_d);
 				routes.add(R.drawable.d_d);
-				if (products.get(1) == 5) {
+				if (productsNew.get(1) == 5) {
 					routes.add(R.drawable.d_e);
 				}
 			}
 		}
-		if(products.size()==1){
-			if (products.get(0)== 1){
+		if(productsNew.size()==1){
+			if (productsNew.get(0)== 1){
 				routes.add(R.drawable.a_a);
 				routes.add(R.drawable.a_a);
 			}
-			if (products.get(0)== 2){
+			if (productsNew.get(0)== 2){
 				routes.add(R.drawable.b_b);
 				routes.add(R.drawable.b_b);
 			}
-			if (products.get(0)== 3){
+			if (productsNew.get(0)== 3){
 				routes.add(R.drawable.c_c);
 				routes.add(R.drawable.c_c);
 			}
-			if (products.get(0)== 4){
+			if (productsNew.get(0)== 4){
 				routes.add(R.drawable.d_d);
 				routes.add(R.drawable.d_d);
 			}
-			if (products.get(0)== 5){
+			if (productsNew.get(0)== 5){
 				routes.add(R.drawable.e_e);
 				routes.add(R.drawable.e_e);
 			}
@@ -324,6 +331,34 @@ public class MainActivity<x> extends AppCompatActivity {
 			}
 		});
 	}
+//------------------------------------------------------------------------------------------
+
+	public void onClickFinish (View view){
+
+		finishBtn();
+	}
+
+	public void finishBtn(){
+/*
+		new AlertDialog.Builder(this)
+				.setTitle("Finish")
+				.setMessage("Are you sure you want to finish?")
+				.setCancelable(false)
+				.setNegativeButton(android.R.string.no, null)
+				.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+					public void onClick(DialogInterface arg0, int arg1) {
+						MainActivity.super.onBackPressed();
+					}
+				}).create().show();*/
+
+
+		Intent intent = new Intent(this, ThankYou.class);
+		intent.putExtra("keyName", productsList);
+		startActivity(intent);
+
+	}
+
 //------------------------------------------------------------------------------------------
 
 	public void start_stop(View v) throws IOException {
@@ -585,6 +620,13 @@ public class MainActivity<x> extends AppCompatActivity {
 	public void start(){
 
 		Intent intent = new Intent(this, Map_Navigation.class);
+
+		startActivity(intent);
+	}
+
+	public void finish_acti(){
+
+		Intent intent = new Intent(this, ThankYou.class);
 
 		startActivity(intent);
 	}

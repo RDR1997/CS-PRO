@@ -33,6 +33,7 @@ public class selectProduct extends AppCompatActivity {
     MultiAdapter multiAdapter;
     ArrayList<Product> list;
     ArrayList<String> sele;
+    ArrayList<String> seleName;
     Button btn;
 
 
@@ -80,11 +81,13 @@ public class selectProduct extends AppCompatActivity {
                 if (multiAdapter.getSelected().size() > 0) {
                     StringBuilder stringBuilder = new StringBuilder();
                     sele = new ArrayList<>();
+                    seleName = new ArrayList<>();
                     for (int i = 0; i < multiAdapter.getSelected().size(); i++) {
-                        stringBuilder.append(multiAdapter.getSelected().get(i).getItem_number());
+                        stringBuilder.append(multiAdapter.getSelected().get(i).getName());
                         stringBuilder.append("\n");
 
                         sele.add(multiAdapter.getSelected().get(i).getItem_number());
+                        seleName.add(multiAdapter.getSelected().get(i).getName());
 
 
 
@@ -111,6 +114,8 @@ public class selectProduct extends AppCompatActivity {
     public void gotoMap () {
         Intent intent = new Intent(selectProduct.this, MainActivity.class);
         intent.putExtra("key", sele);
+        intent.putExtra("keyName", seleName);
         startActivity(intent);
-    }
+
+       }
 }

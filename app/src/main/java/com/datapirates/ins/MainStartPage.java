@@ -20,6 +20,7 @@ public class MainStartPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_start_page);
+
     }
 
     public void onClickC(View view) {
