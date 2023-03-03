@@ -55,6 +55,7 @@ public class MultiAdapter extends RecyclerView.Adapter<MultiAdapter.MyViewHolder
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView name;
+        TextView item_number;
         ImageView imageView;
 
 
@@ -62,6 +63,7 @@ public class MultiAdapter extends RecyclerView.Adapter<MultiAdapter.MyViewHolder
             super(itemView);
 
             name = itemView.findViewById(R.id.emp_name);
+            item_number = itemView.findViewById(R.id.emp_id);
             imageView = itemView.findViewById(R.id.imageViewy);
 
         }
@@ -70,6 +72,7 @@ public class MultiAdapter extends RecyclerView.Adapter<MultiAdapter.MyViewHolder
         void bind (final Product product){
             imageView.setVisibility(product.isChecked() ? View.VISIBLE : View.GONE);
             name.setText(product.getName());
+            item_number.setText(product.getItem_number());
 
             itemView.setOnClickListener(new View.OnClickListener() {
                     @Override

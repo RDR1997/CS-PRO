@@ -26,4 +26,7 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="Fury">Fury</string>
     <string name="Sandali">Sandali</string>
+    <string name="iPhone">iPhone</string>
+    <string name="Suthan">Suthan</string>
+    <string name="SLT">SLT</string>
 </resources>

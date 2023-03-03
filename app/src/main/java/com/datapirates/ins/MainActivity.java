@@ -130,14 +130,6 @@ public class MainActivity<x> extends AppCompatActivity {
 
 		buttonclick();
 
-
-	/*	products = new ArrayList<>();
-		products.add(1);        //A
-		products.add(2);        //B
-		products.add(3);        //C
-		products.add(4);        //D
-		products.add(5);        //E*/
-
 		routes = new ArrayList<Integer>();
 		if(productsNew.size()==5){
 			routes.add(R.drawable.a_a);
@@ -339,19 +331,6 @@ public class MainActivity<x> extends AppCompatActivity {
 	}
 
 	public void finishBtn(){
-/*
-		new AlertDialog.Builder(this)
-				.setTitle("Finish")
-				.setMessage("Are you sure you want to finish?")
-				.setCancelable(false)
-				.setNegativeButton(android.R.string.no, null)
-				.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-
-					public void onClick(DialogInterface arg0, int arg1) {
-						MainActivity.super.onBackPressed();
-					}
-				}).create().show();*/
-
 
 		Intent intent = new Intent(this, ThankYou.class);
 		intent.putExtra("keyName", productsList);
@@ -400,26 +379,26 @@ public class MainActivity<x> extends AppCompatActivity {
 		boolean ssidfound = false;
 		String ssid = getString(R.string.TheLastKnght97);
 		String ssid2 = getString(R.string.Nokia3);
-		String ssid3 = getString(R.string.Nokia6);
+		String ssid3 = getString(R.string.SLT);
 		for (ScanResult scanResult : mWifiList) {
 			if (scanResult.SSID.equals(ssid)) {
 				ssidfound = true;
-			if (scanResult.level <= -30 && scanResult.level >= -35){
+			if (scanResult.level >= -42){
 					d1 = 1;
 				}
-				if (scanResult.level < -35 && scanResult.level >= -40) {
+				if (scanResult.level < -43 && scanResult.level >= -48) {
 					d1 = 2;
 				}
-				if (scanResult.level < -40 && scanResult.level >= -45) {
+				if (scanResult.level < -49 && scanResult.level >= -53) {
 					d1 = 3;
 				}
-				if (scanResult.level < -45 && scanResult.level >= -50) {
+				if (scanResult.level < -54 && scanResult.level >= -56) {
 						d1 = 4;
 				}
-				if (scanResult.level < -50 && scanResult.level >= -55) {
+				if (scanResult.level < -57) {
 					d1 = 5;
 				}
-				if (scanResult.level < -60 && scanResult.level >= -65){
+				/*if (scanResult.level < -60 && scanResult.level >= -65){
 					d1 = 6;
 				}
 				if (scanResult.level < -65 && scanResult.level >= -70) {
@@ -430,7 +409,7 @@ public class MainActivity<x> extends AppCompatActivity {
 				}
 				if (scanResult.level < -80) {
 					d1 = 9;
-				}
+				}*/
 
 
 				DateFormat df = new SimpleDateFormat("yyyy-MM-dd G 'at' HH:mm:ss.SSSZ");
@@ -445,24 +424,24 @@ public class MainActivity<x> extends AppCompatActivity {
 
 			if (scanResult.SSID.equals(ssid2)) {
 				ssidfound = true;
-				if (scanResult.level <= -50 && scanResult.level >= -54){
+				if (scanResult.level >= -42){
 					d2 = 1;
 				}
-				if (scanResult.level < -54 && scanResult.level >= -57.3333) {
+				if (scanResult.level < -43 && scanResult.level >= -52) {
 					d2 = 2;
 				}
-				if (scanResult.level < -57.3333 && scanResult.level >= -60.6667) {
+				if (scanResult.level < -53 && scanResult.level >= -55) {
 					d2 = 3;
 				}
-				if (scanResult.level < -60.6667 && scanResult.level >= -63.6667) {
+				if (scanResult.level < -56 && scanResult.level >= -60) {
 					d2 = 4;
 				}
-				if (scanResult.level < -63.6667 && scanResult.level >= -66.6667) {
+				if (scanResult.level < -61 && scanResult.level >= -65) {
 					d2 = 5;
 				}
-				if (scanResult.level < -66.6667 && scanResult.level >= -68){
+				if (scanResult.level < -66){
 					d2 = 6;
-				}
+				}/*
 				if (scanResult.level < -68 && scanResult.level >= -69.3333) {
 					d2 = 7;
 				}
@@ -471,7 +450,7 @@ public class MainActivity<x> extends AppCompatActivity {
 				}
 				if (scanResult.level < -75) {
 					d2 = 9;
-				}
+				}*/
 
 				DateFormat df = new SimpleDateFormat("yyyy-MM-dd G 'at' HH:mm:ss.SSSZ");
 				String date = df.format(Calendar.getInstance().getTime());
@@ -485,24 +464,24 @@ public class MainActivity<x> extends AppCompatActivity {
 
 			if (scanResult.SSID.equals(ssid3)) {
 				ssidfound = true;
-				if (scanResult.level <= -50 && scanResult.level >= -54){
+				if (scanResult.level >= -35){
 					d3 = 1;
 				}
-				if (scanResult.level < -54 && scanResult.level >= -57.3333) {
+				if (scanResult.level < -36 && scanResult.level >= -46) {
 					d3 = 2;
 				}
-				if (scanResult.level < -57.3333 && scanResult.level >= -60.6667) {
+				if (scanResult.level < -47 && scanResult.level >= -49) {
 					d3 = 3;
 				}
-				if (scanResult.level < -60.6667 && scanResult.level >= -63.6667) {
+				if (scanResult.level < -50 && scanResult.level >= -53) {
 					d3 = 4;
 				}
-				if (scanResult.level < -63.6667 && scanResult.level >= -66.6667) {
+				if (scanResult.level < -54 && scanResult.level >= -56) {
 					d3 = 5;
 				}
-				if (scanResult.level < -66.6667 && scanResult.level >= -68){
+				if (scanResult.level < -57){
 					d3 = 6;
-				}
+				}/*
 				if (scanResult.level < -68 && scanResult.level >= -69.3333) {
 					d3 = 7;
 				}
@@ -511,7 +490,7 @@ public class MainActivity<x> extends AppCompatActivity {
 				}
 				if (scanResult.level < -75) {
 					d3 = 9;
-				}
+				}*/
 
 				DateFormat df = new SimpleDateFormat("yyyy-MM-dd G 'at' HH:mm:ss.SSSZ");
 				String date = df.format(Calendar.getInstance().getTime());
@@ -520,21 +499,52 @@ public class MainActivity<x> extends AppCompatActivity {
 				Log.i(TAG, data);
 			}
 
-			double x1=0,x2=6,x3=2,y1=0,y2=4,y3=8;
-			double A = ((x2-x1)*(y3-y2)-(y2-y1)*(x3-x2));
+			double x1=5,x2=10,x3= 0,y1=0,y2=5,y3=10;
+		//	double A = 2*((x2-x1)*(y3-y2)-(y2-y1)*(x3-x2));
 
-			int x = (int) ((y3-y2)*(d1*d1 - d2*d2 - x1*x1 +x2*x2 - y1*y1 + y2*y2) - (y2-y1)*(d2*d2 - d3*d3 - x2*x2 +x3*x3 - y2*y2 + y3*y3) / A);
-			int y = (int) ((x3-x2)*(d1*d1 - d2*d2 - x1*x1 +x2*x2 - y1*y1 + y2*y2) - (x3-x2)*(d2*d2 - d3*d3 - x2*x2 +x3*x3 - y2*y2 + y3*y3) / (-1)*A);
+	//		int x = (int) (((y3-y2) * ((d1*d1) - (d2*d2) - (x1*x1) + (x2*x2) - (y1*y1) + (y2*y2)) - (y2-y1)*((d2*d2) - (d3*d3) - (x2*x2) + (x3*x3) - (y2*y2) + (y3*y3))) / A);
+	//		int y = (int) (((x3-x2) * ((d1*d1) - (d2*d2) - (x1*x1) + (x2*x2) - (y1*y1) + (y2*y2)) - (x3-x2)*((d2*d2) - (d3*d3) - (x2*x2) + (x3*x3) - (y2*y2) + (y3*y3)))/ ((-1)*A));
+
+			//double x =  ((y3-y2)*((d1*d1 - d3*d3 - x1*x1 +x3*x3 - y1*y1 + y3*y3) - (y3-y1)*(d2*d2 - d3*d3 - x2*x2 +x3*x3 - y2*y2 + y3*y3)) / A);
+			//double y =  ((x3-x1)*((d2*d2 - d3*d3 - x2*x2 +x3*x3 - y2*y2 + y3*y3) - (x3-x2)*(d1*d1 - d3*d3 - x1*x1 +x3*x3 - y1*y1 + y3*y3)) / A);
+
+		//	double x =  (y3 - y2) * ((d1*d1) - (d2*d2));
+		//	double y =  (x3 - x2) * ((d1*d1) - (d2*d2));
+
+			//double A = ((d2)*(d2)) - ((d1)*(d1)) + ((x1)*(x1)) - ((x2)*(x2)) + ((y1)*(y1)) - ((y2)*(y2));
+			//double D = ((d3)*(d3)) - ((d2)*(d2)) + ((x2)*(x2)) - ((x3)*(x3)) + ((y2)*(y2)) - ((y3)*(y3));
+
+			double A = (d2 * d2) - (d1 * d1) - 100;
+
+
+			double D = (d3 * d3) - (d2 * d2) + 25;
+
+		/*	double B = 2 * (x1 - x2);
+			double E = 2 * (x2 - x3);
+
+			double C = 2 * (y1 - y2);
+			double F = 2 * (y2 - y3);*/
+
+			double B = -10;
+			double E = 20;
+
+			double C = -10;
+			double F = -10;
+
+			double x = (D - A)/40;
+			double y = (-1)*(D + A)/40;
+
 
 			xTextView.setText(String.valueOf(x));
 			yTextView.setText(String.valueOf(y));
 
 		//	start();
-			ImageView image = (ImageView) findViewById(R.id.newPin);
+			ImageView image1 = (ImageView) findViewById(R.id.pointer);
 
 			// Update the image's X and Y coordinates
-			image.setX(x);
-			image.setY(y);
+			image1.setX((float) (850 - x*85));
+
+			image1.setY((float) (1080 - y*54));
 		}
 		if (ssidfound == false) {
 			startButton.setText("Start");

@@ -6,7 +6,10 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,8 +40,6 @@ public class selectProduct extends AppCompatActivity {
     Button btn;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +50,7 @@ public class selectProduct extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+
 
         btn = findViewById(R.id.toMap);
 
@@ -89,22 +91,20 @@ public class selectProduct extends AppCompatActivity {
                         sele.add(multiAdapter.getSelected().get(i).getItem_number());
                         seleName.add(multiAdapter.getSelected().get(i).getName());
 
-
-
+                        gotoMap();
                     }
-
-
-
                     ShowToast(stringBuilder.toString().trim());
-                } else
+
+                }
+                else {
                     ShowToast("No Selection");
-                gotoMap();
-            //    Intent intent = new Intent(selectProduct.this, MainActivity.class);
-            //    intent.putExtra("key", multiAdapter.getSelected());
-            //    startActivity(intent);
+
+                }
             }
 
         });
+
+
     }
 
     private void ShowToast (String msg){
@@ -112,10 +112,11 @@ public class selectProduct extends AppCompatActivity {
     }
 
     public void gotoMap () {
-        Intent intent = new Intent(selectProduct.this, MainActivity.class);
-        intent.putExtra("key", sele);
-        intent.putExtra("keyName", seleName);
-        startActivity(intent);
+
+            Intent intent = new Intent(selectProduct.this, MainActivity.class);
+            intent.putExtra("key", sele);
+            intent.putExtra("keyName", seleName);
+            startActivity(intent);
 
        }
 }
